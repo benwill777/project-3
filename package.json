@@ -1,10 +1,17 @@
 {
-  "name": "project-3",
+  "name": "bog-express-one",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "proxy": "http://localhost:3001",
+  "main": "server.js",
+  "engines": {
+    "node": "9.7.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "concurrently \"node app.js\" \"cd client && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd client && npm i && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +22,8 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "mongoose": "^5.0.16",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "npm": "^6.0.0",
+    "react-router-dom": "^4.2.2"
   }
 }
