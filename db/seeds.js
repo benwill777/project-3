@@ -1,5 +1,7 @@
 require('dotenv').config()
-
+const Restaurant = require('../db/models/Restaurant')
+const Survey = require('../db/models/Survey')
+const Question = require('../db/models/Question')
 const mongoose = require('mongoose')
 const db = mongoose.connection
 db.on('open', () => {
