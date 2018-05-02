@@ -16,7 +16,11 @@ mongoose.connect(process.env.MONGODB_URI)
 db.once('open', () => {
     console.log(`Mongoose has connected to MongoDB`)
 })
+const Bennett = new User({
+    userName: 'benwill777',
+    password: 'bennetttheman',
 
+})
 
 const muddpie = new Restaurant({
     title: 'Staplehouse',
@@ -64,6 +68,7 @@ const theYeahBurger = new Restaurant({
             answer: 'about 600'
         }]
     }]
+
 })
 Restaurant.remove().then(() => {
     return Restaurant.insertMany([muddpie, felinis, theLocal,

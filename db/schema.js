@@ -17,9 +17,24 @@ const RestaurantSchema = new Schema({
     location: String,
     survey: [SurveySchema]
 })
+const UserSchema = new Schema({
+    userName: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+
+})
+
+// Create models for each schema
+const User = mongoose.model('User', UserSchema)
 
 module.exports = {
     RestaurantSchema,
     SurveySchema,
-    QuestionSchema
+    QuestionSchema,
+    UserSchema
 }
