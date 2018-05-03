@@ -3,6 +3,7 @@ const Restaurant = require('../db/models/Restaurant')
 const Survey = require('../db/models/Survey')
 const Question = require('../db/models/Question')
 const mongoose = require('mongoose')
+const User = require('../db/models/Users')
 const db = mongoose.connection
 db.on('open', () => {
     console.log('successful connection with db')
@@ -22,7 +23,7 @@ const Bennett = new User({
 
 })
 
-const muddpie = new Restaurant({
+const staplehouse = new Restaurant({
     title: 'Staplehouse',
     location: 'Edgewood',
     survey: [{
@@ -71,7 +72,7 @@ const theYeahBurger = new Restaurant({
 
 })
 Restaurant.remove().then(() => {
-    return Restaurant.insertMany([muddpie, felinis, theLocal,
+    return Restaurant.insertMany([staplehouse, felinis, theLocal,
         theYeahBurger
     ])
 }).then(() => {

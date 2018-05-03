@@ -1,20 +1,54 @@
-const express = require('express')
+const express = require('express');
 const { User } = require('../db/schema')
-const router = express.Router()
+const router = express.Router({ mergeParams: true });
 
-router.get('/', (req, res) => {
-    User.find()
-        .then(users => {
-            res.json(users)
-        })
-        .catch((err) => console.log(err))
+
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find({})
+        res.json(users)
+    } catch (err) {
+        console.log(err)
+    }
 })
 
-router.post('/', (req, res) => {
-    User.create(req.body.user)
-        .then((data) => {
-            res.json(data)
+router.get('/:userId', async (req, res) => {
+
+    try {
+        const user = await User.findById(req.params.userId)
+        res.json(user)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.delete('/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId
+        await User.findByIdAndRemove(userId)
+        res.json({
+
         })
+    } catch (err) {
+        console.log
+    }
 
 })
+router.post('/', async (req, res) => {
+    const newUserFromForm = req.body
+    const user = new User({
+        UserName
+
+
+    })
+    try {
+        const newUser = await user.save()
+        res.json({ newUser })
+    } catch (err) {
+        console.log
+    }
+})
+
+
+
 module.exports = router;

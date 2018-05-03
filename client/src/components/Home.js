@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+// import LoginPage from './components/LoginPage'
 class Home extends Component {
     render() {
         return (
