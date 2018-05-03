@@ -17,7 +17,7 @@ class App extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/restaurants" component={Restaurants} />
           <Route path="/singlerestaurant" component={singleRestaurant} />
-          <Route path="/login" component={Users} />
+          <Route path="/" component={Users} />
 
 
 

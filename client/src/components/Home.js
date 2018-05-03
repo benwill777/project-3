@@ -7,7 +7,6 @@ class Home extends Component {
             <Router>
                 <div>
                     <h1>Welcome to SurveyHQ!</h1>
-                    <Link to='/login'><button>Log In Here</button> </Link>
 
                 </div>
             </Router>

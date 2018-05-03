@@ -1,42 +1,34 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const Schema = mongoose.schema
 
-//mongoose.Promise = global.Promise
-
-
-const SurveySchema = new Schema({
+const surveySchema = new Schema({
     name: String,
     question: String,
     answer: String
 })
 
-const RestaurantSchema = new Schema({
+const restaurantSchema = new Schema({
     title: String,
     location: String,
-    survey: [SurveySchema]
+    surveys: [surveySchema]
 })
-const UserSchema = new Schema({
-    userName: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    Restaurants: [RestaurantSchema]
+const userSchema = new Schema({
+    username: String,
+    postion: String,
+    restaurants: [restaurantSchema]
 })
+
 
 
 // Create models for each schema
-const User = mongoose.model('User', UserSchema)
-const Restaurant = mongoose.model('Restaurant', RestaurantSchema)
-const Survey = mongoose.model('Survey', SurveySchema)
+const User = mongoose.model('User', userSchema)
+const Restaurant = mongoose.model('Restaurant', restaurantSchema)
+const Survey = mongoose.model('Survey', surveySchema)
 
 
 
 module.exports = {
-    RestaurantSchema,
-    SurveySchema,
-    UserSchema
+    User,
+    Survey,
+    Restaurant,
 }

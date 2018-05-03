@@ -2,7 +2,6 @@
   "name": "bog-express-one",
   "version": "1.0.0",
   "description": "",
-  "proxy": "http://localhost:3001",
   "main": "server.js",
   "engines": {
     "node": "9.7.0"

@@ -1,9 +1,15 @@
 require('dotenv').config()
-const Restaurant = require('../db/models/Restaurant')
-const Survey = require('../db/models/Survey')
+const { Restaurant } = require('./schema')
+const { Survey } = require('./schema')
+const { Users } = require('./schema')
+
+
 const mongoose = require('mongoose')
-const User = require('../db/models/Users')
+mongoose.connect(process.env.MONGODB_URI)
+
+
 const db = mongoose.connection
+
 db.on('open', () => {
     console.log('successful connection with db')
 })
@@ -11,58 +17,30 @@ db.on('error', (error) => {
     console.log(error)
 })
 // connect to database
-mongoose.connect(process.env.MONGODB_URI)
 
-db.once('open', () => {
-    console.log(`Mongoose has connected to MongoDB`)
-})
-const customerService = new Survey({
-    question: 'how many times did you return your food',
-    answer: 'about 600'
+User.remove()
+    .then(() => {
+        const bennett = new User({
+            username: "bennett777",
+            postion: "customer",
+        })
+        const staplehouse = new Restaurant({
+            title: "staplehouse",
+            location: "Edgewood",
+        })
+        const random = new Survey({
+            name: "customer satisfaction",
+            question: "how quickly did your server greet your table?",
+            answer: "fast"
+        })
 
-})
-const survey1 = new Survey({
-    name: 'fun survey',
-    question: 'how many drinks did you chug',
-    answer: 'about hella'
-})
+        staplehouse.surveys.push(random)
 
-const staplehouse = new Restaurant({
-    title: 'Staplehouse',
-    location: 'Edgewood',
-    Survey: [survey1, customerService]
-})
-const felinis = new Restaurant({
-    title: 'Felinis',
-    location: 'Buckhead',
-})
+        bennett.restaurants.push(staplehouse)
 
 
-const theLocal = new Restaurant({
-    title: 'The Local',
-    location: 'Ponce DeLeon',
-    Survey: [survey1, customerService]
+        return bennett.save()
+    })
 
-})
-const theYeahBurger = new Restaurant({
-    title: 'Yeah Burger',
-    location: 'Virginia Highlands',
-    survey: [customerService]
-})
 
-const Bennett = new User({
-    userName: 'benwill777',
-    password: 'bennetttheman',
-    Restaurant: [staplehouse, felinis, theLocal, theYeahBurger]
-})
 
-User.remove().then(() => {
-    return Bennett.save()
-}).then(() => {
-    console.log('Saved User Successfully')
-    db.close()
-
-}).catch((error) => {
-    console.log(error)
-    db.close()
-})
