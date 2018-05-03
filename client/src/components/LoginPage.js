@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
-import { Link, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class LoginPage extends Component {
     state = {
-        users: []
+        users: [],
+        user: {
+            userName: '',
+            password: ''
+        }
     }
+
     componentDidMount() {
         this.getAllUsers()
     }
@@ -20,67 +25,61 @@ class LoginPage extends Component {
                 console.error(err)
             })
     }
-    createUser = () => {
-        axios.post('/api/users', {
-            user: this.state.user
-        })
+
+    handleSignUp = (e) => {
+        e.preventDefault()
+        axios.post('/api/users', { user: this.state.user })
             .then((res) => {
                 const users = [...this.state.users]
                 users.push(res.data)
                 this.setState({ users })
             })
     }
-    handleSignUp = (event) => {
-        event.preventDefault()
-        axios.post('/api/users', { user: this.state.user })
-            .then((response) => {
-                console.log(response.body)
-                event.preventDefault()
-                this.createUser()
-            })
-    }
+
     handleChange = (event) => {
         const user = { ...this.state.user }
         user[event.target.name] = event.target.value
         this.setState({ user })
     }
+
     render() {
-        console.log("Users in state at LogIn Render", this.state.users)
         const userLinks = this.state.users.map((user, i) => {
             return (
-
                 <div key={i}>
                     <Link to={`/user/${user._id}`}>{user.userName}</Link>
                 </div>)
         })
+
         return (
-            <div>
-                <div>
-                    {/* <Link to='/'>Return Home</Link> */}
+            <div class="form">
+                <div class="Link-style">
+                    <Link to='/'>Return Home</Link>
                 </div>
-                <h1>Thank you for using SurveyHQ</h1>
-                <h3>Please Select an Existing User or Sign in</h3>
-                {userLinks}
-                <h1>Sign-Up</h1>
+                <div>
+                    <h3>Log-In</h3>
+                    <h6>Please Log In</h6>
+                    <div class="update">
+                        <p class="styleuserlinks">
+                            <div> {userLinks} </div>
+                        </p>
+                    </div>
+                </div>
+                <h2>Sign-Up</h2>
                 <form onSubmit={this.handleSignUp}>
                     <div>
-                        <label htmlFor="userName">Your Name</label>
-                        <input onChange={this.handleChange} name="userName" type="text" value={this.state.userName} />
+                        <label htmlFor="userName">User Name</label>
+                        <input onChange={this.handleChange} name="userName" type="text" />
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input onChange={this.handleChange} name="password" type="text" value={this.state.password} />
+                        <input onChange={this.handleChange} name="password" type="text" />
                     </div>
-                    <Link to='/restaurants'><button>Sign Up</button></Link>
+                    <button class="waves-effect waves-light btn center-align btn-small center">Send</button>
                 </form>
-
-
             </div>
 
         )
     }
-
 }
-
 
 export default LoginPage
