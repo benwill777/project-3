@@ -21,14 +21,14 @@ const userSchema = new Schema({
 
 
 // Create models for each schema
-const Users = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema)
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 const Survey = mongoose.model('Survey', surveySchema)
 
 
 
 module.exports = {
-    Users,
+    User,
     Survey,
     Restaurant,
 }

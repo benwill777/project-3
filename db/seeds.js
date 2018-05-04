@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { Restaurant } = require('./schema')
 const { Survey } = require('./schema')
-const { Users } = require('./schema')
+const { User } = require('./schema')
 
 
 const mongoose = require('mongoose')
@@ -16,7 +16,9 @@ db.on('open', () => {
 db.on('error', (error) => {
     console.log(error)
 })
-Users.remove()
+
+User.remove()
+
     .then(() => {
         const bennett = new User({
             username: "bennett777",

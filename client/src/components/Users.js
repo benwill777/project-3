@@ -17,10 +17,10 @@ class Users extends Component {
             })
     }
     render() {
-        const userLinks = this.state.Users.map((user, i) => {
+        const userLinks = this.state.users.map((user, i) => {
             return (
                 <div key={i}>
-                    <Link to={`/users/${user._id}`}> {user.UserName}</Link>
+                    <Link to={`/restaurants/${user._id}`}> {user.UserName}</Link>
                 </div>
             )
         })

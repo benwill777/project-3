@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Restaurants from './Restaurants';
 class singleRestaurant extends Component {
     render() {
         return (
             <div>
-                hello world
+                <Restaurants />
             </div>
-        );
+        )
     }
 }
 
