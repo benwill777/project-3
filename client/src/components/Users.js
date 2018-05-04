@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import PageStyle from './styledcomponents/PageStyle'
+import styles from 'styled-components'
+
 class Users extends Component {
     state = {
         users: []
@@ -13,6 +16,7 @@ class Users extends Component {
     getAllUsers = () => {
         axios.get('/api/users')
             .then(res => {
+                console.log('get response: ', res.data)
                 this.setState({ users: res.data })
             })
     }
@@ -20,15 +24,17 @@ class Users extends Component {
         const userLinks = this.state.users.map((user, i) => {
             return (
                 <div key={i}>
-                    <Link to={`/restaurants/${user._id}`}> {user.UserName}</Link>
+                    <Link to={`/restaurants/${user._id}`}> My Link {user.username}</Link>
                 </div>
             )
         })
         return (
-            <div>
+            <PageStyle>
+
+                <h1>Check out the users page! </h1>
                 {userLinks}
 
-            </div>
+            </PageStyle >
         );
     }
 }

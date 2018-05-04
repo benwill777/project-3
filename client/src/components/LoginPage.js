@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import styled from 'styled-components'
+import Button from './styledcomponents/Button'
 
 class LoginPage extends Component {
     state = {
@@ -53,7 +55,7 @@ class LoginPage extends Component {
         return (
             <div class="form">
                 <div class="Link-style">
-                    <Link to='/'>Return Home</Link>
+                    <Link to='/'><Button>Return Home</Button></Link>
                 </div>
                 <div>
                     <h3>Log-In</h3>
