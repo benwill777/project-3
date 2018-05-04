@@ -1,7 +1,7 @@
 const express = require('express');
-const { User } = require('../db/schema')
-const router = express.Router({ mergeParams: true });
-
+const { User } = Schema
+const router = express.Router()
+const Schema = require('../db/schema.js')
 
 router.get('/', async (req, res) => {
     try {
@@ -37,7 +37,7 @@ router.delete('/:userId', async (req, res) => {
 router.post('/', async (req, res) => {
     const newUserFromForm = req.body
     const user = new User({
-        UserName
+        userName
 
 
     })
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
         const newUser = await user.save()
         res.json({ newUser })
     } catch (err) {
-        console.log
+        console.log("this works")
     }
 })
 

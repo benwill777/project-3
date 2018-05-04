@@ -16,9 +16,7 @@ db.on('open', () => {
 db.on('error', (error) => {
     console.log(error)
 })
-// connect to database
-
-User.remove()
+Users.remove()
     .then(() => {
         const bennett = new User({
             username: "bennett777",

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Home from './components/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import LoginPage from './components/LoginPage'
@@ -13,11 +12,10 @@ class App extends Component {
     return (
       <Router>
         <div><Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={LoginPage} />
+          <Route exact path="/login" component={LoginPage} />
           <Route path="/restaurants" component={Restaurants} />
-          <Route path="/singlerestaurant" component={singleRestaurant} />
-          <Route path="/" component={Users} />
+          <Route exact path="/singlerestaurant" component={singleRestaurant} />
+          <Route exact path="/" component={Users} />
 
 
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.schema
+const Schema = mongoose.Schema
 
 const surveySchema = new Schema({
     name: String,
@@ -21,14 +21,14 @@ const userSchema = new Schema({
 
 
 // Create models for each schema
-const User = mongoose.model('User', userSchema)
+const Users = mongoose.model('User', userSchema)
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 const Survey = mongoose.model('Survey', surveySchema)
 
 
 
 module.exports = {
-    User,
+    Users,
     Survey,
     Restaurant,
 }

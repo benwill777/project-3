@@ -3,31 +3,24 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 class Users extends Component {
     state = {
-        users: [],
+        users: []
 
     }
     componentDidMount() {
         this.getAllUsers()
     }
+
     getAllUsers = () => {
         axios.get('/api/users')
             .then(res => {
-                this.setState[{ users: res.data }]
+                this.setState({ users: res.data })
             })
-
     }
-
-
-
-
-
-
-
     render() {
-        const userLinks = this.state.users.map((user, i) => {
+        const userLinks = this.state.Users.map((user, i) => {
             return (
                 <div key={i}>
-                    <Link to={`/users/${users._id}`}> {users.username}</Link>
+                    <Link to={`/users/${user._id}`}> {user.UserName}</Link>
                 </div>
             )
         })
