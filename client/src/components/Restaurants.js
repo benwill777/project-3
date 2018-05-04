@@ -29,7 +29,7 @@ class Restaurants extends Component {
         const restaurantLinks = this.state.restaurants.map((restaurant, i) => {
             return (
                 <div key={i}>
-                    <Link to={`/users/${restaurant._id}`}> <Button>{restaurant.title}</Button></Link>
+                    <Link to={`/users/${restaurant._id}`}> <Button> {restaurant.title}</Button></Link>
                 </div>
             )
         })

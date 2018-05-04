@@ -7,7 +7,19 @@ React.js
 Node
 Balsamiq (wireframing)
 trello (userstories)
+Body-Parser
+Concurrently
+react-materialize
 Styled-Components
-creatye-react-app
+create-react-app
+Postman
+MongoDB Compass
+### Future versions
+In version 2 I would like to add User Auth., with full crud on all of my models. I would like my styling to be complete, my user interface to be seamless.
+### Major Lessons Learned
+From project 3, i learned to stick to my user stories, treat the planning phase of the project with the same respect as the actual code. In addition, I further gained knowledge of how to target specific needed Google search results, and how to filter out poor search returns. (outdated stackoverflow)
+###
+
+
 
 

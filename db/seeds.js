@@ -27,6 +27,12 @@ User.remove()
         const staplehouse = new Restaurant({
             title: "staplehouse",
             location: "Edgewood",
+
+        })
+        const tonton = new Restaurant({
+            title: "Ton Ton",
+            location: "Ponce City Market",
+
         })
         const random = new Survey({
             name: "customer satisfaction",
@@ -36,7 +42,7 @@ User.remove()
 
         staplehouse.surveys.push(random)
 
-        bennett.restaurants.push(staplehouse)
+        bennett.restaurants.push(staplehouse, tonton)
 
 
         return bennett.save()
