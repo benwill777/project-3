@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import Button from './styledcomponents/Button'
+import PageStyle from './styledcomponents/PageStyle'
 
 class LoginPage extends Component {
     state = {
@@ -32,7 +33,7 @@ class LoginPage extends Component {
         e.preventDefault()
         axios.post('/api/users', { user: this.state.user })
             .then((res) => {
-                const users = [...this.state.users]
+                const users = [...this.state.user]
                 users.push(res.data)
                 this.setState({ users })
             })
@@ -53,32 +54,34 @@ class LoginPage extends Component {
         })
 
         return (
-            <div class="form">
-                <div class="Link-style">
-                    <Link to='/'><Button>Return Home</Button></Link>
-                </div>
-                <div>
-                    <h3>Log-In</h3>
-                    <h6>Please Log In</h6>
-                    <div class="update">
-                        <p class="styleuserlinks">
-                            <div> {userLinks} </div>
-                        </p>
-                    </div>
-                </div>
-                <h2>Sign-Up</h2>
-                <form onSubmit={this.handleSignUp}>
-                    <div>
-                        <label htmlFor="userName">User Name</label>
-                        <input onChange={this.handleChange} name="userName" type="text" />
+            <PageStyle>
+                <div class="form">
+                    <div class="Link-style">
+                        <Link to='/users'><Button>Users</Button></Link>
                     </div>
                     <div>
-                        <label htmlFor="password">Password</label>
-                        <input onChange={this.handleChange} name="password" type="text" />
+                        <h2>Log-In</h2>
+
+                        <div class="update">
+                            <p class="styleuserlinks">
+                                <div> {userLinks} </div>
+                            </p>
+                        </div>
                     </div>
-                    <button class="waves-effect waves-light btn center-align btn-small center">Send</button>
-                </form>
-            </div>
+
+                    <form onSubmit={this.handleSignUp}>
+                        <div>
+                            <label htmlFor="userName">User Name</label>
+                            <input onChange={this.handleChange} name="userName" type="text" />
+                        </div>
+                        <div>
+                            <label htmlFor="password">Password</label>
+                            <input onChange={this.handleChange} name="password" type="text" />
+                        </div>
+                        <Button >Sign-In</Button>
+                    </form>
+                </div>
+            </PageStyle>
 
         )
     }

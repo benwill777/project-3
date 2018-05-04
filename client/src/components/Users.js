@@ -24,7 +24,7 @@ class Users extends Component {
         const userLinks = this.state.users.map((user, i) => {
             return (
                 <div key={i}>
-                    <Link to={`/restaurants/${user._id}`}> My Link {user.username}</Link>
+                    <Link to={`/users/${user._id}`}> My Link {user.username}</Link>
                 </div>
             )
         })
